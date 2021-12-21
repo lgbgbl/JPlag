@@ -81,7 +81,7 @@ public class Report { // Mostly legacy code with some minor improvements.
      * This procedure copies all the data from "data/" into the result-directory.
      */
     private void copyStaticFiles() {
-        final String[] fileList = {"back.gif", "forward.gif", "help-en.html", "help-sim-en.html", "logo.png", "fields.js"};
+        final String[] fileList = {"back.gif", "forward.gif"};
 
         for (int i = fileList.length - 1; i >= 0; i--) {
             try {
@@ -433,7 +433,7 @@ public class Report { // Mostly legacy code with some minor improvements.
 
         htmlFile.println("<BODY BGCOLOR=#ffffff LINK=#000088 VLINK=#000000 TEXT=#000000>");
         htmlFile.println("<TABLE ALIGN=center CELLPADDING=2 CELLSPACING=1>");
-        htmlFile.println("<TR VALIGN=middle ALIGN=center BGCOLOR=#ffffff><TD>" + "<IMG SRC=\"logo.png\" ALT=\"JPlag\" BORDER=0></TD>");
+        htmlFile.println("<TR VALIGN=middle ALIGN=center BGCOLOR=#ffffff>");
         htmlFile.println("<TD><H1><BIG>" + title + "</BIG></H1></TD></TR>");
 
         htmlFile.println("<TR BGCOLOR=#aaaaff VALIGN=top><TD>" + msg.getString("Report.Language") + ":</TD><TD>"
@@ -557,8 +557,7 @@ public class Report { // Mostly legacy code with some minor improvements.
     private void writeLinksToComparisons(HTMLFile htmlFile, String headerStr, String csvFile) {
         List<JPlagComparison> comparisons = result.getComparisons(options.getMaximumNumberOfComparisons()); // should be already sorted!
 
-        htmlFile.println(headerStr + " (<a href=\"help-sim-" + "en" // Country tag
-                + ".html\"><small><font color=\"#000088\">" + msg.getString("Report.WhatIsThis") + "</font></small></a>):</H4>");
+        htmlFile.println(headerStr + ":</H4>");
         htmlFile.println("<p><a href=\"" + csvFile + "\">download csv</a></p>");
         htmlFile.println("<TABLE CELLPADDING=3 CELLSPACING=2>");
 
@@ -601,10 +600,6 @@ public class Report { // Mostly legacy code with some minor improvements.
         htmlFile.println("      <center>");
         htmlFile.println("        <a href=\"index.html\" target=\"_top\">");
         htmlFile.println("          " + msg.getString("Report.INDEX"));
-        htmlFile.println("        </a>");
-        htmlFile.println("        <span>-</span>");
-        htmlFile.println("        <a href=\"help-en.html\" target=\"_top\">");
-        htmlFile.println("          " + msg.getString("Report.HELP"));
         htmlFile.println("        </a>");
         htmlFile.println("      </center>");
         htmlFile.println("    </div>");
